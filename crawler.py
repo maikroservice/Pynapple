@@ -19,7 +19,9 @@ from github import Github
 from shutil import rmtree
 
 from conf import config
+from conf.plugin import PluginLoader
 from lib.RepoSearcher import RepoSearcher
+
 
 
 def check_contents(data, pattern):
@@ -209,8 +211,12 @@ if __name__ == '__main__':
         print("Please put the access token in a file called \"%s\" in the root directory." % config.github_token_fname)
         sys.exit(1)
 
+    
+    p = PluginLoader()
+    plugins = p.plugins
+
     ghub = Github(login_or_token=access_token, per_page=100)
-    searcher = RepoSearcher(ghub, upper_date_limit, max_empty_months=12, languages=search_conf.languages,
-                            **config.search_params)
+    searcher = RepoSearcher(ghub, upper_date_limit, max_empty_months=12, languages=search_conf.languages, plugins=plugins
+                            )
 
     execute_search(search_conf, searcher, config.worker_count)

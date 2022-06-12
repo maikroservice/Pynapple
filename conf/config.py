@@ -2,8 +2,6 @@
 # This file holds all configurations for the crawler.
 #
 
-from types import SimpleNamespace
-from conf import patterns
 
 worker_count = 8
 
@@ -15,11 +13,13 @@ search_params = {
     "max_size": 10000,
 }
 
-processed_base_dir = "processed"
-logs_base_dir = "logs"
-tmp_base_dir = "tmp"
-github_token_fname = "github_token.txt"
+PROCESSES_BASE_DIR = "processed"
+LOGS_BASE_DIR = "logs"
+TMP_BASE_DIR = "tmp"
+GITHUB_TOKEN_FNAME = "github_token.txt"
+PLUGIN_BASE_DIR = "plugins"
 
+"""
 configs = {c["name"]: SimpleNamespace(**c) for c in (
     patterns.php_sql_config,
     patterns.php_simple_sql_config,
@@ -30,3 +30,4 @@ configs = {c["name"]: SimpleNamespace(**c) for c in (
     patterns.bo_cpp_config,
     patterns.bo_cpp_strcpy_config
 )}
+"""

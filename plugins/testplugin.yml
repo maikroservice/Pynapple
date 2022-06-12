@@ -1,0 +1,24 @@
+id: php-lfi-include
+info:
+  name: PHP local file inclusion via include()
+  author: maikroservice
+  #severity: medium
+  description: searching for PHP local file inclusion because of include() use
+  tags:
+    - php
+    - lfi
+    - include
+parameters:
+  languages: 
+    - php
+  file_types: 
+    - php
+    - php3
+    - php5
+    - phps
+  matchers:
+    regular_expression: True
+    regex: '\.searchParams.get\(.*?\))|(\.split\(\"&\"\)'
+    # Important: Keep the proceeding three matches
+    #"regex": re.compile(b"\\n(.*)\\n(.*)\\n(.*)(INSERT YOUR REGEX HERE)",
+    #    re.IGNORECASE | re.MULTILINE)
