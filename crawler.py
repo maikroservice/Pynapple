@@ -6,6 +6,7 @@
 
 
 # IMPORTS
+import argparse
 import os
 import sys
 import mmap
@@ -188,6 +189,16 @@ def execute_search(search_conf, searcher, workers):
 
 if __name__ == '__main__':
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument()
+
+    # TODO -> what exactly are we looking for?
+    # plugins are loaded - either all or specifically for xx?
+    # (based on tags?/languages?/)
+    # the user is able to provide:
+    #   - language
+    #   - min/max stars
+    #   - 
     if len(sys.argv) < 2:
         print("Please specify one of the following search config names:")
         for key in config.configs:
